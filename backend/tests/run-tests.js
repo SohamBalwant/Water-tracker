@@ -10,6 +10,7 @@ import { runPricingTests } from './pricing.test.js';
 import { runStatusTransitionTests } from './statusTransitions.test.js';
 import { runMatchingTests } from './matching.test.js';
 import { runApiHandlerTests } from './apiHandlers.test.js';
+import { runPerson3Tests } from './person3.test.js';
 
 let passed = 0;
 let failed = 0;
@@ -39,7 +40,7 @@ const proxyAssert = wrapAssert(assert);
 
 async function runAll() {
   console.log('====================================================');
-  console.log(' WaterSaathi Backend Test Suite (Person 2)');
+  console.log(' WaterSaathi Test Suite (Person 2 Backend & Person 3 Operator/E2E)');
   console.log('====================================================\n');
 
   const testSuites = [
@@ -48,6 +49,7 @@ async function runAll() {
     { name: '3. Lifecycle State Transition Tests', fn: () => runStatusTransitionTests(proxyAssert) },
     { name: '4. Candidate Matching & Pooling Tests', fn: () => runMatchingTests(proxyAssert) },
     { name: '5. API Lambda Handlers & DB Integration Tests', fn: () => runApiHandlerTests(proxyAssert) },
+    { name: '6. Person 3 Operator, Telemetry, Admin & 12-Step E2E Lifecycle Tests', fn: () => runPerson3Tests(proxyAssert) },
   ];
 
   for (const suite of testSuites) {

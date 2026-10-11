@@ -1,3 +1,151 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { operatorApi } from '../services/operatorApi.js';
+import { apiClient } from '../services/apiClient.js';
+import { AdminStatsOverview } from '../components/admin/AdminStatsOverview.jsx';
+import { TankerFleetTable } from '../components/admin/TankerFleetTable.jsx';
+import { AdminBookingsTable } from '../components/admin/AdminBookingsTable.jsx';
+import { ShortageReportsReview } from '../components/admin/ShortageReportsReview.jsx';
+import { PriceTransparencyAudit } from '../components/admin/PriceTransparencyAudit.jsx';
+import { NoticeBanner } from '../components/shared/NoticeBanner.jsx';
+
+export function AdminPage() {
+  const [stats, setStats] = useState({});
+  const [tankers, setTankers] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [reports, setReports] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState('FLEET');
+  const [feedback, setFeedback] = useState(null);
+
+  const loadAdminData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const [fleetStats, tankerList, bookingList, reportList] = await Promise.all([
+        operatorApi.getFleetOverview(),
+        operatorApi.getTankers(),
+        operatorApi.getBookings(),
+        operatorApi.getShortageReports(),
+      ]);
+
+      setStats(fleetStats);
+      setTankers(tankerList);
+      setBookings(bookingList);
+      setReports(reportList);
+    } catch (err) {
+      console.error('[AdminPage] Failed to load records:', err);
+      setError(err.message || 'Failed to load administrative records.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadAdminData();
+  }, [loadAdminData]);
+
+  const handleUpdateReportStatus = async (reportId, status) => {
+    await operatorApi.updateReportStatus(reportId, status);
+    setReports(prev => prev.map(r => r.reportId === reportId ? { ...r, verificationStatus: status } : r));
+    const fleetStats = await operatorApi.getFleetOverview();
+    setStats(fleetStats);
+  };
+
+  const handleResetData = () => {
+    apiClient.resetDemo();
+    loadAdminData();
+    setFeedback({ type: 'success', text: 'Demonstration records reset to baseline state.' });
+    setTimeout(() => setFeedback(null), 3000);
+  };
+
+  return (
+    <div className="admin-page">
+      <NoticeBanner
+        type="warning"
+        message="Notice: Demonstration Admin Console — Authenticated production security is disabled for this test suite. Telemetry freshness flags identify tanker GPS updates older than 4 hours."
+      />
+
+      {feedback && (
+        <div className={`status-feedback feedback-${feedback.type}`}>
+          {feedback.text}
+        </div>
+      )}
+
+      {error && (
+        <div className="status-feedback feedback-error">
+          ⚠️ {error} &mdash;{' '}
+          <button type="button" className="btn-link" onClick={loadAdminData}>
+            Retry loading
+          </button>
+        </div>
+      )}
+
+      {/* Overview Statistics KPIs */}
+      <AdminStatsOverview stats={stats} />
+
+      {/* Navigation tabs for Admin Sub-Sections */}
+      <div className="admin-subnav-row">
+        <div className="nav-tabs">
+          <button
+            type="button"
+            className={`nav-tab-btn ${activeTab === 'FLEET' ? 'active' : ''}`}
+            onClick={() => setActiveTab('FLEET')}
+          >
+            🚚 Tanker Fleet ({tankers.length})
+          </button>
+          <button
+            type="button"
+            className={`nav-tab-btn ${activeTab === 'BOOKINGS' ? 'active' : ''}`}
+            onClick={() => setActiveTab('BOOKINGS')}
+          >
+            📋 Bookings &amp; Pools ({bookings.length})
+          </button>
+          <button
+            type="button"
+            className={`nav-tab-btn ${activeTab === 'REPORTS' ? 'active' : ''}`}
+            onClick={() => setActiveTab('REPORTS')}
+          >
+            📢 Shortage Reports ({reports.length})
+          </button>
+          <button
+            type="button"
+            className={`nav-tab-btn ${activeTab === 'PRICING' ? 'active' : ''}`}
+            onClick={() => setActiveTab('PRICING')}
+          >
+            ⚖️ Pricing Audit
+          </button>
+        </div>
+
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          onClick={handleResetData}
+          title="Reset local mock database to original demo seeds"
+        >
+          🔄 Re-seed Demo Data
+        </button>
+      </div>
+
+      {/* Tab Panels */}
+      {activeTab === 'FLEET' && (
+        <TankerFleetTable tankers={tankers} />
+      )}
+
+      {activeTab === 'BOOKINGS' && (
+        <AdminBookingsTable bookings={bookings} />
+      )}
+
+      {activeTab === 'REPORTS' && (
+        <ShortageReportsReview
+          reports={reports}
+          onUpdateStatus={handleUpdateReportStatus}
+        />
+      )}
+
+      {activeTab === 'PRICING' && (
+        <PriceTransparencyAudit tankers={tankers} />
+      )}
 import React from 'react';
 
 export function AdminPage() {
