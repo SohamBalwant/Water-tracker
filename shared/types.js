@@ -3,6 +3,10 @@
  * 
  * Shared contract across frontend (Resident, Operator, Admin)
  * and serverless backend services.
+ * WaterSaathi - Shared Domain Types, Enums, and Utility Functions
+ * 
+ * Shared across Person 1 (Web UI), Person 2 (Backend API), and Person 3 (Operator/Admin).
+ * All services and components must adhere to these contracts without variation.
  */
 
 export const TankerStatus = Object.freeze({
@@ -58,6 +62,8 @@ export const ShortageReportStatus = Object.freeze({
  * Converts INR to integer paise for reliable monetary persistence.
  * @param {number|string} inr 
  * @returns {number}
+ * Currency conversion utilities:
+ * Monies are displayed to users in INR and stored in DynamoDB as integer paise.
  */
 export function inrToPaise(inr) {
   return Math.round(Number(inr) * 100);
@@ -70,4 +76,6 @@ export function inrToPaise(inr) {
  */
 export function paiseToInr(paise) {
   return Number((Number(paise) / 100).toFixed(2));
+export function paiseToInr(paise) {
+  return Number(paise) / 100;
 }

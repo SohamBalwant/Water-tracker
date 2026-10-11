@@ -1,6 +1,10 @@
 import { RequestStatus, WaterType } from '../../../../shared/types.js';
 
 export const mockRequests = [
+/**
+ * Seed demonstration water requests for resident pooling and tracking.
+ */
+export const initialMockRequests = [
   {
     requestId: 'request-001',
     requesterId: 'resident-demo-1',
@@ -13,6 +17,16 @@ export const mockRequests = [
     status: RequestStatus.OPEN,
     quotedPrice: 500,
     createdAt: '2026-10-10T12:00:00.000Z',
+    address: 'Plot 42, Near Datta Mandir',
+    quantityLitres: 1000,
+    latitude: 19.8765,
+    longitude: 75.3438,
+    deliveryWindowStart: new Date(Date.now() + 1000 * 60 * 60 * 2).toISOString(),
+    status: 'OPEN',
+    waterType: 'NON_DRINKING',
+    quotedPrice: 500,
+    quotedPricePaise: 50000,
+    createdAt: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
   },
   {
     requestId: 'request-002',
@@ -26,6 +40,17 @@ export const mockRequests = [
     status: RequestStatus.OPEN,
     quotedPrice: 500,
     createdAt: '2026-10-10T12:05:00.000Z',
+    locality: 'Cidco Sector N-5',
+    address: 'Omkar Society, Flat 3B',
+    quantityLitres: 1000,
+    latitude: 19.8770,
+    longitude: 75.3440,
+    deliveryWindowStart: new Date(Date.now() + 1000 * 60 * 60 * 2.5).toISOString(),
+    status: 'OPEN',
+    waterType: 'NON_DRINKING',
+    quotedPrice: 500,
+    quotedPricePaise: 50000,
+    createdAt: new Date(Date.now() - 1000 * 60 * 25).toISOString(),
   },
   {
     requestId: 'request-003',
@@ -40,6 +65,17 @@ export const mockRequests = [
     quotedPrice: 1560,
     bookingId: 'booking-001',
     createdAt: '2026-10-11T07:15:00.000Z',
+    locality: 'MGM Sports Complex Area',
+    address: 'Green Meadows Apt #12',
+    quantityLitres: 3000,
+    latitude: 19.8825,
+    longitude: 75.3485,
+    deliveryWindowStart: new Date(Date.now() + 1000 * 60 * 60 * 4).toISOString(),
+    status: 'OPEN',
+    waterType: 'NON_DRINKING',
+    quotedPrice: 1350,
+    quotedPricePaise: 135000,
+    createdAt: new Date(Date.now() - 1000 * 60 * 15).toISOString(),
   },
   {
     requestId: 'request-004',
@@ -54,6 +90,17 @@ export const mockRequests = [
     quotedPrice: 1200,
     bookingId: 'booking-002',
     createdAt: '2026-10-11T07:30:00.000Z',
+    locality: 'Kranti Chowk',
+    address: 'Modern School Hostel',
+    quantityLitres: 2000,
+    latitude: 19.8745,
+    longitude: 75.3375,
+    deliveryWindowStart: new Date(Date.now() + 1000 * 60 * 60 * 5).toISOString(),
+    status: 'MATCHED',
+    waterType: 'DRINKING',
+    quotedPrice: 1300,
+    quotedPricePaise: 130000,
+    createdAt: new Date(Date.now() - 1000 * 60 * 10).toISOString(),
   },
   {
     requestId: 'request-005',
@@ -68,5 +115,16 @@ export const mockRequests = [
     quotedPrice: 1200,
     bookingId: 'booking-002',
     createdAt: '2026-10-11T07:35:00.000Z',
+    locality: 'Garkheda Parisar',
+    address: 'Kailas Nagar, Lane 4',
+    quantityLitres: 4000,
+    latitude: 19.8695,
+    longitude: 75.3515,
+    deliveryWindowStart: new Date(Date.now() + 1000 * 60 * 60 * 1).toISOString(),
+    status: 'ACCEPTED',
+    waterType: 'NON_DRINKING',
+    quotedPrice: 2080,
+    quotedPricePaise: 208000,
+    createdAt: new Date(Date.now() - 1000 * 60 * 45).toISOString(),
   },
 ];

@@ -27,6 +27,74 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+/* ==========================================================================
+   WaterSaathi - Global CSS & Design Tokens
+   Clean, accessible, mobile-first design system for Indian community water access
+   ========================================================================== */
+
+:root {
+  /* Brand Water Palette */
+  --color-primary: #0077b6;
+  --color-primary-dark: #023e8a;
+  --color-primary-light: #e0f2fe;
+  --color-accent: #0096c7;
+  --color-teal: #0d9488;
+  
+  /* Neutrals & Surfaces */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-muted: #f1f5f9;
+  --bg-subtle: #f8fafc;
+
+  /* Text & Contrast */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Borders & Dividers */
+  --border-light: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Semantic State Colors */
+  --status-available-bg: #ecfdf5;
+  --status-available-text: #065f46;
+  --status-available-border: #a7f3d0;
+
+  --status-busy-bg: #fffbeb;
+  --status-busy-text: #92400e;
+  --status-busy-border: #fde68a;
+
+  --status-enroute-bg: #eff6ff;
+  --status-enroute-text: #1e40af;
+  --status-enroute-border: #bfdbfe;
+
+  --status-offline-bg: #f1f5f9;
+  --status-offline-text: #475569;
+  --status-offline-border: #cbd5e1;
+
+  --status-verified-bg: #f0fdf4;
+  --status-verified-text: #166534;
+  --status-verified-border: #bbf7d0;
+
+  --status-warning-bg: #fff7ed;
+  --status-warning-text: #9a3412;
+  --status-warning-border: #fed7aa;
+
+  /* Geometry & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 *, *::before, *::after {
@@ -216,6 +284,106 @@ body {
 .text-warning { color: var(--color-warning); }
 .text-danger { color: var(--color-danger); }
 .text-center { text-align: center; }
+  font-family: var(--font-family);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Base Utility Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.badge-available {
+  background-color: var(--status-available-bg);
+  color: var(--status-available-text);
+  border-color: var(--status-available-border);
+}
+
+.badge-busy {
+  background-color: var(--status-busy-bg);
+  color: var(--status-busy-text);
+  border-color: var(--status-busy-border);
+}
+
+.badge-enroute {
+  background-color: var(--status-enroute-bg);
+  color: var(--status-enroute-text);
+  border-color: var(--status-enroute-border);
+}
+
+.badge-offline {
+  background-color: var(--status-offline-bg);
+  color: var(--status-offline-text);
+  border-color: var(--status-offline-border);
+}
+
+.badge-verified {
+  background-color: var(--status-verified-bg);
+  color: var(--status-verified-text);
+  border-color: var(--status-verified-border);
+}
+
+.badge-unverified {
+  background-color: var(--bg-muted);
+  color: var(--text-muted);
+  border-color: var(--border-light);
+}
+
+.badge-drinking {
+  background-color: #f0fdfa;
+  color: #0f766e;
+  border-color: #99f6e4;
+}
+
+.badge-non-drinking {
+  background-color: #f8fafc;
+  color: #334155;
+  border-color: #e2e8f0;
+}
+
+.badge-simulated {
+  background-color: #fef3c7;
+  color: #78350f;
+  border-color: #fde68a;
+}
 
 /* Buttons */
 .btn {
@@ -243,11 +411,19 @@ body {
 .btn-sm {
   padding: 0.35rem 0.75rem;
   font-size: 0.78rem;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.925rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  min-height: 44px; /* Accessible touch target */
 }
 
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
+  color: var(--text-inverse);
 }
 .btn-primary:hover:not(:disabled) {
   background-color: var(--color-primary-dark);
@@ -414,4 +590,106 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+.btn-secondary {
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-muted);
+  border-color: var(--border-strong);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* App Header Navigation */
+.app-header {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0, 119, 182, 0.25);
+}
+
+.brand-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #023e8a;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.role-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-muted);
+  padding: 4px;
+  border-radius: var(--radius-lg);
+}
+
+.role-tab {
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.15s ease;
+}
+
+.role-tab.active {
+  background-color: var(--bg-surface);
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.role-tab:hover:not(.active) {
+  color: var(--text-main);
 }

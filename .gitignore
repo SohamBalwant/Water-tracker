@@ -4,6 +4,10 @@ node_modules/
 .pnp.js
 
 # Build outputs
+# Testing and coverage
+coverage/
+
+# Build artifacts
 dist/
 dist-ssr/
 *.local
@@ -27,3 +31,13 @@ pnpm-debug.log*
 # OS Files
 .DS_Store
 Thumbs.db
+# AWS SAM build
+.aws-sam/
+
+# Editor & OS files
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -10,3 +10,12 @@ if (rootElement) {
     </React.StrictMode>
   );
 }
+import 'leaflet/dist/leaflet.css';
+import './styles/global.css';
+import './styles/resident.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
