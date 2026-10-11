@@ -1,0 +1,369 @@
+/**
+ * WaterSaathi - Admin Console Styles (Person 3)
+ */
+
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Warning & Mode Banner */
+.admin-warning-banner {
+  background-color: #fefce8;
+  border: 1px solid #fef08a;
+  border-left: 4px solid #ca8a04;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: #713f12;
+  margin-bottom: 1.25rem;
+}
+
+.warning-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* KPI Overview Grid */
+.stats-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-top: 3px solid var(--color-primary);
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kpi-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.kpi-icon {
+  font-size: 1.2rem;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+  line-height: 1.1;
+}
+
+.kpi-unit {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.kpi-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Table Card Layouts */
+.table-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.table-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.row-stale-warning {
+  background-color: #fffbeb !important;
+}
+
+.stale-alert-pill {
+  display: inline-block;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  margin-top: 0.25rem;
+}
+
+.table-progress-bar {
+  width: 100px;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.table-progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.admin-household-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 260px;
+}
+
+.admin-household-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-surface-muted);
+  border: 1px solid #e2e8f0;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+}
+
+.chip-locality {
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.chip-qty {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.chip-price {
+  color: #065f46;
+  font-weight: 700;
+}
+
+/* Community Shortage Reports Grid */
+.community-report-disclaimer {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: #1e40af;
+  margin-bottom: 1rem;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.report-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.report-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.report-locality {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.report-description {
+  font-size: 0.82rem;
+  color: #334155;
+  font-style: italic;
+  background-color: var(--color-surface-muted);
+  padding: 0.65rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #94a3b8;
+}
+
+.report-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.report-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.report-resolved-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Price Transparency Audit Card */
+.benchmark-pill {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid #bae6fd;
+}
+
+.audit-summary-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0;
+}
+
+.audit-box {
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.audit-box-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.audit-box-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.audit-box-sub {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.suspicious-alert-box {
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.alert-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #9a3412;
+  margin-bottom: 0.45rem;
+}
+
+.suspicious-list {
+  padding-left: 1.25rem;
+  font-size: 0.8rem;
+  color: #7c2d12;
+}
+
+.price-tag-anomalous {
+  font-weight: 800;
+  color: #dc2626;
+  margin: 0 0.25rem;
+}
+
+.normal-pricing-banner {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.pricing-rules-note {
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.pricing-rules-note strong {
+  color: var(--color-text-main);
+  display: block;
+  margin-bottom: 0.2rem;
+}
